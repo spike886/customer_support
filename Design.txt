@@ -1,0 +1,86 @@
+#High level requirement analysis
+
+* For customers
+ * A web portal to create support requests and to view status of previous requests.
+  Here we have a customer entity and support request entity with a status
+  Regarding support requests, the customer should be able to create them in an standard way and view previous request, its status and add comments
+  The models:
+  -customer: user, password
+  -support request: status, title, description
+
+* For support agents
+ * A web portal to find and process support requests.
+  Here we have a agent entity
+  It needs a screen listing all support request been able to search them
+  it also needs a processing support requests when the agent can change its status and add a comments
+
+ * Any one report, PDF exportable, on requests data. Imagine any report.
+  The agent should be able to generate reports filtering by any its values, and selecting the fields shown
+  This reports could be exported to pdf file
+
+* Other functional requirements
+ * Users should be able to authentication normally
+  The customer most register to submit support requests and login to see the previous ones, so we need a customer login/registration screen
+  Regarding to registration i will use the simplest one, because nothing is specified.
+  This agent should be able to login to authenticate itself
+  The agent will not accept registration for security reasons
+
+ * An admin user should be able to manage other users and any other system objects.
+  Admin are not agents so we need other entity called admin
+  The admin most authenticate too, with a login screen but it won't let to register by security reasons
+  The admin has the ability to CRUD on any object on the system
+
+
+#High level presentation of the data model
+
+* Customer
+ * id
+ * email
+ * password
+ * token
+ * full name
+ * created at
+ * updated at
+
+* Request
+ * id
+ * title
+ * description
+ * status
+ * customer id
+ * agent id
+ * created at
+ * updated at
+
+* Request Comment
+ * id
+ * text
+ * author id
+ * author type
+ * created at
+ * updated at
+
+* Agent
+ * id
+ * email
+ * password
+ * token
+ * full name
+ * created at
+ * updated at
+
+* Admin
+ * id
+ * email
+ * password
+ * created at
+ * updated at
+
+
+#Architecture diagrams describing the composition and working of the system, explaining the component interaction and process, control and data flows
+
+
+#Explain the breakdown of the system into components with technical implementation details of each component along with the design patterns involved and with reasons that justify your choices.
+
+
+#Use both visual elements (diagrams) and text descriptions to maximize the amount of information conveyed while keeping the document as compact as possible
