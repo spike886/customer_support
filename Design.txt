@@ -37,8 +37,7 @@
  * id
  * email
  * password
- * token
- * full name
+ * name
  * created at
  * updated at
 
@@ -64,8 +63,7 @@
  * id
  * email
  * password
- * token
- * full name
+ * name
  * created at
  * updated at
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721165233) do
+ActiveRecord::Schema.define(version: 20160721233229) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -43,4 +43,45 @@ ActiveRecord::Schema.define(version: 20160721165233) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "agents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",           default: "", null: false
+    t.string   "name",            default: "", null: false
+    t.string   "password_digest",              null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["email"], name: "index_agents_on_email", using: :btree
+  end
+
+  create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "email",           default: "", null: false
+    t.string   "name",            default: "", null: false
+    t.string   "password_digest",              null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["email"], name: "index_customers_on_email", using: :btree
+  end
+
+  create_table "request_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "text",        limit: 65535, null: false
+    t.string   "author_type",               null: false
+    t.integer  "author_id",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["author_type", "author_id"], name: "index_request_comments_on_author_type_and_author_id", using: :btree
+  end
+
+  create_table "requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",                                     null: false
+    t.text     "description", limit: 65535,                 null: false
+    t.string   "status",                    default: "new", null: false
+    t.integer  "customer_id",                               null: false
+    t.integer  "agent_id"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.index ["agent_id"], name: "index_requests_on_agent_id", using: :btree
+    t.index ["customer_id"], name: "index_requests_on_customer_id", using: :btree
+  end
+
+  add_foreign_key "requests", "agents"
+  add_foreign_key "requests", "customers"
 end

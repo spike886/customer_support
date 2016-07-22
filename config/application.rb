@@ -18,5 +18,16 @@ module CustomerSupport
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+
+    config.autoload_paths << Rails.root.join('lib')
+
+    config.middleware.insert_before 0, 'Rack::Cors' do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
+    config.middleware.use Rack::Attack
   end
 end
