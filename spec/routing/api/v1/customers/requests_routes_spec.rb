@@ -22,7 +22,7 @@ describe Api::V1::Customers::RequestsController do
 
     describe 'PATCH v1/customers/requests/1' do
       it 'routes to #update' do
-        expect(patch: v1_customers_request_path(1)).to route_to('api/v1/customers/requests#update', id: '1')
+        expect(put: v1_customers_request_path(1)).to route_to('api/v1/customers/requests#update', id: '1')
       end
     end
   end

@@ -9,7 +9,7 @@ module Api::V1
       if command.success?
         render json: { auth_token: command.result }
       else
-        render json: { error: command.errors }, status: :unauthorized
+        render json: { errors: command.errors }, status: :unauthorized
       end
     end
   end

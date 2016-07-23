@@ -16,6 +16,11 @@ RSpec.describe Agent, type: :model do
     it{ is_expected.to have_db_column(:password_digest).of_type(:string).with_options(null: false) }
   end
 
+  context 'Associations' do
+    it{ is_expected.to have_many :requests }
+    it{ is_expected.to have_many :request_comments }
+  end
+
   describe 'factory' do
     subject { create :agent }
 

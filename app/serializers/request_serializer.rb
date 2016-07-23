@@ -1,3 +1,3 @@
 class RequestSerializer < RequestsSerializer
-  has_many :comments
+  has_one :request_comments
 end

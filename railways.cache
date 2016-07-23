@@ -1,0 +1,39 @@
+                        Prefix Verb       URI Pattern                                           Controller#Action
+        new_admin_user_session GET        /admin/login(.:format)                                active_admin/devise/sessions#new
+            admin_user_session POST       /admin/login(.:format)                                active_admin/devise/sessions#create
+    destroy_admin_user_session DELETE|GET /admin/logout(.:format)                               active_admin/devise/sessions#destroy
+           admin_user_password POST       /admin/password(.:format)                             active_admin/devise/passwords#create
+       new_admin_user_password GET        /admin/password/new(.:format)                         active_admin/devise/passwords#new
+      edit_admin_user_password GET        /admin/password/edit(.:format)                        active_admin/devise/passwords#edit
+                               PATCH      /admin/password(.:format)                             active_admin/devise/passwords#update
+                               PUT        /admin/password(.:format)                             active_admin/devise/passwords#update
+                    admin_root GET        /admin(.:format)                                      admin/dashboard#index
+batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format)             admin/admin_users#batch_action
+             admin_admin_users GET        /admin/admin_users(.:format)                          admin/admin_users#index
+                               POST       /admin/admin_users(.:format)                          admin/admin_users#create
+          new_admin_admin_user GET        /admin/admin_users/new(.:format)                      admin/admin_users#new
+         edit_admin_admin_user GET        /admin/admin_users/:id/edit(.:format)                 admin/admin_users#edit
+              admin_admin_user GET        /admin/admin_users/:id(.:format)                      admin/admin_users#show
+                               PATCH      /admin/admin_users/:id(.:format)                      admin/admin_users#update
+                               PUT        /admin/admin_users/:id(.:format)                      admin/admin_users#update
+                               DELETE     /admin/admin_users/:id(.:format)                      admin/admin_users#destroy
+               admin_dashboard GET        /admin/dashboard(.:format)                            admin/dashboard#index
+                admin_comments GET        /admin/comments(.:format)                             admin/comments#index
+                               POST       /admin/comments(.:format)                             admin/comments#create
+                 admin_comment GET        /admin/comments/:id(.:format)                         admin/comments#show
+                               DELETE     /admin/comments/:id(.:format)                         admin/comments#destroy
+        v1_agents_authenticate POST       /v1/agents/authenticate(.:format)                     api/v1/agents/authentication#authenticate
+    v1_agents_request_comments GET        /v1/agents/requests/:request_id/comments(.:format)    api/v1/agents/comments#index
+                               POST       /v1/agents/requests/:request_id/comments(.:format)    api/v1/agents/comments#create
+            v1_agents_requests GET        /v1/agents/requests(.:format)                         api/v1/agents/requests#index
+             v1_agents_request GET        /v1/agents/requests/:id(.:format)                     api/v1/agents/requests#show
+                               PATCH      /v1/agents/requests/:id(.:format)                     api/v1/agents/requests#update
+                               PUT        /v1/agents/requests/:id(.:format)                     api/v1/agents/requests#update
+     v1_customers_authenticate POST       /v1/customers/authenticate(.:format)                  api/v1/customers/authentication#authenticate
+ v1_customers_request_comments POST       /v1/customers/requests/:request_id/comments(.:format) api/v1/customers/comments#create
+         v1_customers_requests GET        /v1/customers/requests(.:format)                      api/v1/customers/requests#index
+                               POST       /v1/customers/requests(.:format)                      api/v1/customers/requests#create
+          v1_customers_request GET        /v1/customers/requests/:id(.:format)                  api/v1/customers/requests#show
+                               PATCH      /v1/customers/requests/:id(.:format)                  api/v1/customers/requests#update
+                               PUT        /v1/customers/requests/:id(.:format)                  api/v1/customers/requests#update
+        v1_customers_customers POST       /v1/customers/customers(.:format)                     api/v1/customers/customers#create

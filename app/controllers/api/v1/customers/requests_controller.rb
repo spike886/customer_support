@@ -10,18 +10,18 @@ module Api::V1
 
     # GET v1/customer/requests/1
     def show
-      render json: @request
+      render json: @request, include: :request_comments
     end
 
     # POST v1/customer/requests
     def create
-      @request = Request.build request_params
+      @request = Request.new request_params
       @request.customer = current_customer
 
       if @request.save
-        render json: @request, status: :created, location: @request
+        render json: @request, status: :created
       else
-        render json: @request.errors, status: :unprocessable_entity
+        render json: { errors: @request.errors } , status: :unprocessable_entity
       end
     end
 
@@ -30,7 +30,7 @@ module Api::V1
       if @request.update_attributes request_params
           render json: @request
       else
-        render json: @request.errors, status: :unprocessable_entity
+        render json: { errors: @request.errors } , status: :unprocessable_entity
       end
     end
 

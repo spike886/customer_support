@@ -4,13 +4,13 @@ module Api::V1
 
     # POST v1/agent/requests/:request_id/comments
     def create
-      @comment = Comment.build comment_params
+      @comment = @request.request_comments.new comment_params
       @comment.author = current_agent
 
       if @comment.save
-        render json: @comment, status: :created, location: @request
+        render json: @comment, status: :created
       else
-        render json: @comment.errors, status: :unprocessable_entity
+        render json: { errors: @comment.errors } , status: :unprocessable_entity
       end
     end
 
@@ -23,7 +23,7 @@ module Api::V1
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:text)
+      params.require(:request_comment).permit(:text)
     end
   end
 end

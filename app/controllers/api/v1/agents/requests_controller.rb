@@ -19,7 +19,7 @@ module Api::V1
       if @request.update_attributes request_params
           render json: @request
       else
-        render json: @request.errors, status: :unprocessable_entity
+        render json: { errors: @request.errors } , status: :unprocessable_entity
       end
     end
 

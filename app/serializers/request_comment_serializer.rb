@@ -1,0 +1,4 @@
+class RequestCommentSerializer < ActiveModel::Serializer
+  attributes :id, :text
+  belongs_to :author
+end

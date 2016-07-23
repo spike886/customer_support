@@ -19,7 +19,7 @@ module Api::V1
       @request.customer = current_customer
 
       if @request.save
-        render json: @request, status: :created, location: @request
+        render json: @request, status: :created
       else
         render json: @request.errors, status: :unprocessable_entity
       end

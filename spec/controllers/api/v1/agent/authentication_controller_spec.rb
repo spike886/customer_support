@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe Api::V1::Customers::AuthenticationController do
-  let(:customer) { create :customer }
+describe Api::V1::Agents::AuthenticationController do
+  let(:agent) { create :agent }
 
   describe "POST #authenticate" do
     let(:params) { {params: {email: email, password: password} } }
-    let(:email) { customer.email }
+    let(:email) { agent.email }
 
     context "with VALID attributes" do
-      let(:password){ customer.password }
+      let(:password){ agent.password }
 
       describe "response" do
         before{ post :authenticate, params }

@@ -4,12 +4,12 @@ module Api::V1
 
     # POST v1/customer/customers
     def create
-      @customer = Customer.build customer_params
+      @customer = Customer.new customer_params
 
       if @customer.save
-        render json: @customer, status: :created, location: @customer
+        render json: @customer, status: :created
       else
-        render json: @customer.errors, status: :unprocessable_entity
+        render json: { errors: @customer.errors } , status: :unprocessable_entity
       end
     end
 
@@ -17,7 +17,7 @@ module Api::V1
 
     # Only allow a trusted parameter "white list" through.
     def customer_params
-      params.require(:request).permit(:name, :email, :password, :password_confirmation)
+      params.require(:customer).permit(:name, :email, :password, :password_confirmation)
     end
   end
 end

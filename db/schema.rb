@@ -63,11 +63,13 @@ ActiveRecord::Schema.define(version: 20160721233229) do
 
   create_table "request_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",        limit: 65535, null: false
+    t.integer  "request_id",                null: false
     t.string   "author_type",               null: false
     t.integer  "author_id",                 null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["author_type", "author_id"], name: "index_request_comments_on_author_type_and_author_id", using: :btree
+    t.index ["request_id"], name: "index_request_comments_on_request_id", using: :btree
   end
 
   create_table "requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160721233229) do
     t.index ["customer_id"], name: "index_requests_on_customer_id", using: :btree
   end
 
+  add_foreign_key "request_comments", "requests"
   add_foreign_key "requests", "agents"
   add_foreign_key "requests", "customers"
 end
